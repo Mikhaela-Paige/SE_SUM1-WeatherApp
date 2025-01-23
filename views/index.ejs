@@ -1,11 +1,15 @@
+<!-- Include universal header -->
 <%- include("partials/header.ejs") %>
 
 <body>
   <div class="main-body">
+    <!-- Create a dropdown list where users can select pre-set coordinates -->
     <div class="container input-container">
       <form action="/select-city" method="GET">
         <label class="webpage-text" for="city-dropdown">Choose a city:</label>
+        <!-- Call the updateCoordinates function when a new city is selected -->
         <select id="city-dropdown" name="city" onchange="updateCoordinates()">
+          <!-- Define the co-ordinates for each city -->
           <option value="Bristol" data-lat="51.4552" data-lng="-2.5967">
             Bristol
           </option>
@@ -84,9 +88,11 @@
           </option>
         </select>
 
+        <!-- Store the latitude and longitude values in hidden input variables -->
         <input type="hidden" id="latitude" name="latitude" />
         <input type="hidden" id="longitude" name="longitude" />
 
+        <!-- Send the pre-set co-ordinates to the backend -->
         <button type="submit">Submit</button>
       </form>
     </div>
@@ -115,7 +121,9 @@
       </form>
     </div>
 
+    <!-- Display the correct content for the current web page -->
     <div class="container mt-5">
+      <!-- If a set of co-ordinates has been submitted to the backend, display the locational, date and weather information -->
       <% if (locals.overview) { %>
       <p>
         <span class="bold">Latitude:</span> <%= lat %><br />
@@ -126,25 +134,32 @@
         <span class="bold">Weather Overview:</span> <%= overview.replace(/"/g,
         '') %>
       </p>
+      <!-- If no co-ordinates have been submitted, display the following message -->
       <% } else { %>
       <p>No area currently entered</p>
       <% } %>
     </div>
 
+    <!-- Script for updateCoordinate function -->
     <script>
       function updateCoordinates() {
+        // Retrieve the dropdown element selected
         const dropdown = document.getElementById("city-dropdown");
         const selectedOption = dropdown.options[dropdown.selectedIndex];
+        // Set the latitude and longitude based on the city selected
         const latitude = selectedOption.getAttribute("data-lat");
         const longitude = selectedOption.getAttribute("data-lng");
 
+        // Update the hidden input variables
         document.getElementById("latitude").value = latitude;
         document.getElementById("longitude").value = longitude;
       }
 
+      // Run updateCoordinates function when the web page loads
       window.addEventListener("DOMContentLoaded", updateCoordinates);
     </script>
   </div>
 </body>
 
+<!-- Include universal header -->
 <%- include("partials/footer.ejs") %>
