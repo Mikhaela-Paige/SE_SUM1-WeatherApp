@@ -145,6 +145,22 @@ As such, an additional column was added in between the in progress and completed
 
 In order to complete this project, I utilised the agile methodoolgy framework. This involved creating an initial plan and setting up prelimanary tasks that covered set-up, documentation, initial development and some potential extra enhancements. UI designs were also created in Figma prior to any development. Once both of these stages were complete, I began creating the code to the application following the iterative process of developing code, testing and reviewing the code created, adding any additional tasks or required bug fixes to the project tracker, and then returning to once again to development. Once the fundamentals had been completed and the app was operational, the web service was deployed, before returning the the review and develop process once there was a CI/CD pipeline in place to automate change redeployment.
 
+## UI Design
+
+To create a mock-up of my desired web service, I used Figma to design the initial homepage and the response page. This allowed me to create two pages without the need for any code, and gave me the ability to quickly and easily make alterations to previous aspects of the design as I created new ones and re-thought placements and colours. By using a user-friendly, non-code based design prototype, I can easily create a user interface design without the time commitments of coding, the issues that may arise from attempting to alter layouts multiple times to find the best look, and considerations such as colour-blindness can be easily taken into account, with the ability to re-work aspects as many times as is necessary before a final design is agreed upon.
+
+<img width="1045" alt="Figma Image 1" src="https://github.com/user-attachments/assets/2129063f-7805-4462-86fc-03ab72d562d4" />
+<img width="1111" alt="Figma Image 2" src="https://github.com/user-attachments/assets/c7e17157-ca21-44f9-b65f-7683b663e3d4" />
+
+As I work from a macbook pro, I created the initial designs in a provided Figma macbook frame. This decision was made as combining Google Chrome with the flexible nature of css alignments means that the web page is able to adjust itself to different screen sizes automatically, and therefore creating the designs specific to my screen size would enable a direct comparision between the published web service and the proposed designs at the end of development.
+
+The final webpages look as follows:
+
+<img width="1115" alt="UI Image 3" src="https://github.com/user-attachments/assets/3718d0e8-b02d-4324-b98e-7ab404a65ffb" />
+<img width="1115" alt="UI Image 4" src="https://github.com/user-attachments/assets/56590a09-5025-4d29-b6ce-5e54dbfbd3f1" />
+
+These are fairly accurate to the design proposal and have all of the same key aspects and components, therefore conforming to the proposal to a satisfactory level.
+
 ## References
 
 Susnjara, S. and Smalley, I. (2024). What Are CI/CD And The CI/CD Pipeline? | IBM. [online] www.ibm.com. Available at: https://www.ibm.com/think/topics/ci-cd-pipeline (Accessed Jan. 2025).
