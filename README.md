@@ -147,7 +147,7 @@ In order to complete this project, I utilised the agile methodoolgy framework. T
 
 ## UI Design
 
-To create a mock-up of my desired web service, I used Figma to design the initial homepage and the response page. This allowed me to create two pages without the need for any code, and gave me the ability to quickly and easily make alterations to previous aspects of the design as I created new ones and re-thought placements and colours. By using a user-friendly, non-code based design prototype, I can easily create a user interface design without the time commitments of coding, the issues that may arise from attempting to alter layouts multiple times to find the best look, and considerations such as colour-blindness can be easily taken into account, with the ability to re-work aspects as many times as is necessary before a final design is agreed upon.
+To create a mock-up of my desired web service, I used Figma to design the initial homepage and the response page. This allowed me to create two pages without the need for any code, and gave me the ability to quickly and easily make alterations to previous aspects of the design as I created new ones and re-thought placements and colours for accessibility reasons. By using a user-friendly, non-code based design prototype, I can easily create a user interface design without the time commitments of coding, the issues that may arise from attempting to alter layouts multiple times to find the best look, and considerations such as colour-blindness can be easily taken into account, with the ability to re-work aspects as many times as is necessary before a final design is agreed upon.
 
 <img width="1045" alt="Figma Image 1" src="https://github.com/user-attachments/assets/2129063f-7805-4462-86fc-03ab72d562d4" />
 <img width="1111" alt="Figma Image 2" src="https://github.com/user-attachments/assets/c7e17157-ca21-44f9-b65f-7683b663e3d4" />
@@ -161,6 +161,55 @@ The final webpages look as follows:
 
 These are fairly accurate to the design proposal and have all of the same key aspects and components, therefore conforming to the proposal to a satisfactory level.
 
+## Testing
+
+### Logic Tests
+
+In order to test the logic of the application, I used varying methods at different stages of development. During the initial stages, I used postman to ensure the my API call was correctly configured and responsive, and to determine which output variables I needed to return in the front end. Once development of the UI began, the logic was tested by running the app through local host, with co-ordinates being submitted via the front end in order and console logs being used to verify each stage of the API call was functioning as expected, or to debug any issues if the front end wasn't displaying data by using the console to determine if the fault was with the returned values or the API call itself. Using the UI for testing also allowed for attributes such as buttons to have their functionailty verified as well as the base function of te service to return weather information.
+
+### Performance and Accesibility Tests
+
+In order to test the accessibilty and UI of the web service, Google Chrome's Lighthouse was used. Lighthouse is a free, open-source tool that anaylyses web pages from the developer console and provides a score against 4 key metrics .
+  1. Performance - This metric assigns an overall score based upon
+      - First Contentful Paint (FCP): The time at which the first text or image becomes visible to users
+      - Largest Contentful Paint (LCP): The time a page takes to load its largest element for users
+      - Total Blocking Time (TBT): The amount of time that a page is blocked from reacting to user input, like a mouse click
+      - Cumulative Layout Shift (CLS): Measures the layout shifts that occur as users access a page
+      - Speed Index (SI): How quickly the content of a page is loaded
+  2. Accessibility - Tests how accessible the webpage is for those who use assistive technologies
+  3. Best Practices - This tests whether a web page is built using modern web development standards, providing an overall score based upon (Google, 2025):
+      - General Best Practices
+      - Page Speed
+      - Page Security
+      - User Experience
+      - Use of Depricated Technologies
+      - Diagnistic Audits
+  4. Search Engine Optimisation (SEO) - This analyses the technical aspects of SEO including how search engines can understand the content, HTTP status codes and document plugins, mobile-friendly changes and the validity of structured data (Google, 2025)
+
+The results of the Lighthouse test for both the home and results pages of the Weather App are shown below:
+  
+<img width="1126" alt="Lighthouse Image 1" src="https://github.com/user-attachments/assets/13f60805-8fd1-4c94-9d2a-1ea062f2cdaa" />
+<img width="1126" alt="Lighthouse Image 2" src="https://github.com/user-attachments/assets/d3b7029b-94cd-4827-b7a0-b3e00c0005cd" />
+
+While the other metrics recieved perfect scores, the SEO score of 90% was a result of the meta description for both pages.
+
+<img width="755" alt="Lighthouse Image SEO Score" src="https://github.com/user-attachments/assets/5ba42a29-f92c-4679-8a92-6029cc4b91a3" />
+
+As the Weather App is not published to Google and is only currently accesible from either localhost or Render.com, having a meta description isn't currently a vital component. However, if the web service were to enter production and be published to the web, including a short summary of the web service in the meta description would be important for search engine results and increasing click-through rates.
+
+### Test Driven Development
+
+During the development of the Weather App, a test file was made to ensure the proper function of the API call running on the backend. The code for this test is displayed below.
+
+<img width="795" alt="test" src="https://github.com/user-attachments/assets/694c870a-38e5-4989-bd33-e47934893461" />
+
+Initially, this was written as a failing test as per the ticket on the project tracker board. Once the failing test was set up, work then began on coding the web app such that the test would no longer fail. The results of this test post-development are shown in the following images:
+
+<img width="861" alt="TDD 2" src="https://github.com/user-attachments/assets/0b8bd573-f5cc-4db0-996f-e809017c073b" />
+<img width="931" alt="TDD 3" src="https://github.com/user-attachments/assets/dc3e333e-3329-4da2-9dc0-62f10b3c10d3" />
+
 ## References
 
 Susnjara, S. and Smalley, I. (2024). What Are CI/CD And The CI/CD Pipeline? | IBM. [online] www.ibm.com. Available at: https://www.ibm.com/think/topics/ci-cd-pipeline (Accessed Jan. 2025).
+
+Google (2025). Lighthouse. [online] Chrome for Developers. Available at: https://developer.chrome.com/docs/lighthouse (Accessed Jan. 2025).
