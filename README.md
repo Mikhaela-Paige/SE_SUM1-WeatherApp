@@ -208,8 +208,81 @@ Initially, this was written as a failing test as per the ticket on the project t
 <img width="861" alt="TDD 2" src="https://github.com/user-attachments/assets/0b8bd573-f5cc-4db0-996f-e809017c073b" />
 <img width="931" alt="TDD 3" src="https://github.com/user-attachments/assets/dc3e333e-3329-4da2-9dc0-62f10b3c10d3" />
 
+## Evaluation
+
+If I were to complete this project again, or continue further with development, there are a few changes that I would make:
+
+### Test Driven Development
+
+While a failing test for the backend API was written, and then successfully run post-development, this did not follow true test driven development processes. If I were to restart this project, I would likely include a function such as a temperature converter that can calculate from degrees celsius to fahrenheit, or vice versa, and then use jest to test this. In this manner, I would create a failing test and follow Red, Green, Refactor processes in order to create the test, pass the test, improve the code, and then continue to the next test.
+
+An example of a test that I would create for this temperature converter would be
+```
+describe('Temperature Converter - Degrees Celsius to Fahrenheit', () => {
+  test('Should convert a temperature from degrees celsius to fahrenheit', () => {
+    //  arrange
+    const x = 17;
+    // act
+    const result = converter(x, 'C-F');
+    // assert
+    expect(result).toEqual(62.6);
+  });
+});
+```
+
+Further tests could then be created to test fahrenheit to celsius, differing numbers of decimal places, and invalid inputs. For example,
+```
+describe('Edge Cases - String', () => {
+  test('Should return an error when a string is entered ', () => {
+    //  arrange
+    const x = 'string';
+    // act + assert
+    expect(() => converter(x)).toThrow(TypeError('Invalid Argument Type'));
+  });
+});
+```
+
+### Relating Weather Icons
+
+One of the enhancements that I had thought of during the development process was that the icon in the top right corner of the header could be related to the weather conditions in the location that the user enters. The initial enhancement would have been to change the icon to a corresponding one based upon the main weather type, such as replacing the default with
+```
+<svg xmlns="http://www.w3.org/2000/svg" height="32" fill="currentColor" class="bi bi-sun-fill me-2" viewBox="0 0 16 16">
+  <path d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8M8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0m0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13m8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5M3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8m10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0m-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0m9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707M4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708"/>
+</svg> -->
+```
+for a clear day. The next enhancement would potentially then have been to compare the time zone in the entered location to sunset/sunrise times and potentially take this further to use
+```
+<svg xmlns="http://www.w3.org/2000/svg" height="32" fill="currentColor" class="bi bi-moon-stars me-2" viewBox="0 0 16 16">
+  <path d="M6 .278a.77.77 0 0 1 .08.858 7.2 7.2 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277q.792-.001 1.533-.16a.79.79 0 0 1 .81.316.73.73 0 0 1-.031.893A8.35 8.35 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.75.75 0 0 1 6 .278M4.858 1.311A7.27 7.27 0 0 0 1.025 7.71c0 4.02 3.279 7.276 7.319 7.276a7.32 7.32 0 0 0 5.205-2.162q-.506.063-1.029.063c-4.61 0-8.343-3.714-8.343-8.29 0-1.167.242-2.278.681-3.286"/>
+  <path d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.73 1.73 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.73 1.73 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.73 1.73 0 0 0 1.097-1.097zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.16 1.16 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.16 1.16 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732z"/>
+</svg> -->
+```
+for a clear night. The same pattern would be used for clouds, snow, drizzle, rain and thunderstorms with the day time icons being filled white and the night time icons being outlines only. Unfortunately, this enhancement had to be put on hold.
+
+<img width="1075" alt="Eval Image 1" src="https://github.com/user-attachments/assets/aca5269b-58eb-47ad-a8e1-e8f07160174e" />
+
+The API URL that returns a weather overview is appended by data/3.0/onecall/overview, while the API URL that returns a main weather type is appended only by data/3.0/onecall/ (OpenWeather, 2024). I was unable to find a way to make a singular API call that returned both the human-readable overview that was desired as well as a main weather type. I contact OpenWeather to see if there was a way in which to return both these values,
+
+<img width="1444" alt="Eval Image 2" src="https://github.com/user-attachments/assets/ee6fb28b-6474-4a7f-b656-d1b05dc2df99" />
+
+but unfortunately that is not currently within the API's capabilities. If I were to proceed with developing the Weather App, I would integrate an automatic second API call into the back end functions that calls the main API URL in order to provide the header with the main weather data, so that each time coordinates are submitted the input is sent to both endpoints in order to recieve all of the desired data responses.
+
+### Code Engine
+
+While the web service is currently deployed using Render.com, I initially hoped to utilise IBM Code Engine. This would have allowed me to spin up a container image using Docker and the deploy a Code Engine instance to deploy the app with a fully integrated and customisable CI/CD pipeline, as well as allowing me to keep my GitHub repository private so that the code for the app is not available publically on the internet. The first struggle with this was that Code Engine is a chargable software and I didn't have access to any free resources through work as my job role primarily uses TechZone to provision temporary free envoronments for such software licenses. Without a related client opportunity, the longest that I could provision Code Engine for was 6 days which would not have been sufficient for this project.
+
+Thankfully, I was able to speak to someone who works directly with IBM Cloud and has resources assigned to them and gained permission to create a project within their environment for the month needed for deployment, submission and marking. However, while I was able to run the build and connect Code Engine to my GitHub repo by running a script on the IBM Cloud CLI after setting up the project, when I attempted to deploy the app in order to be able to access the web service and generate a sharable link, this step would hang while "waiting for revisions". This was not an error that I, or the members of the cloud team, has come across before and we were unable to diagnose whether this was an issue with the deployment itself or a problem related to the limited compute resources provided for free instances. As a result, after trying a range of approaches from using the Code Engine UI to running multiple variations of the build and deployment script through the CLI, I ended up having touse Render.com.
+
+With a longer time frame, and the support of the IBM Cloud team, I believe it would be possible to resolve this issue and be able to host the Weather App on IBM Code Engine as initially planned.
+
+### Summary
+
+Overall, while there may have been aspects of the project that I would change or struggles that I would have spent longer trying to resolve, I believe that the project was successful. Aside from one feature which was put on hold, the acceptance criteria were met for every ticket on the project management board and the final web service both functioned as expected and adhered to the initial UI designs.
+
 ## References
 
-Susnjara, S. and Smalley, I. (2024). What Are CI/CD And The CI/CD Pipeline? | IBM. [online] www.ibm.com. Available at: https://www.ibm.com/think/topics/ci-cd-pipeline (Accessed Jan. 2025).
+Susnjara, S. and Smalley, I. (2024). What Are CI/CD And The CI/CD Pipeline? | IBM. [online] ibm.com. Available at: https://www.ibm.com/think/topics/ci-cd-pipeline (Accessed Jan. 2025).
 
 Google (2025). Lighthouse. [online] Chrome for Developers. Available at: https://developer.chrome.com/docs/lighthouse (Accessed Jan. 2025).
+
+OpenWeather (2024). One Call API 3.0 - OpenWeatherMap. [online] openweathermap.org. Available at: https://openweathermap.org/api/one-call-3 (Accessed Dec. 2024).
