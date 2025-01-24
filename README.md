@@ -33,6 +33,8 @@ From this point, you can either return to the home page by clicking the button d
 
 https://github.com/user-attachments/assets/5e7f6804-a6f4-425a-a8f7-4b7942f10386
 
+Please Note: If the Weather App isn't displaying, refresh the browser until it loads as the Render.com instance may have gone to sleep due to inactivity and need restarting.
+
 ## Technical Documentation
 
 ### Technical Stack
